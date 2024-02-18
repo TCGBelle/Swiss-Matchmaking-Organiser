@@ -1,0 +1,36 @@
+﻿<UserControl x:Class="EloSwissMatchMaking.Views.AddPlayerbyDBView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:EloSwissMatchMaking.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="400" d:DesignWidth="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Add Existing Player" Style="{StaticResource Header}" Grid.Row="0"/>
+        <Grid Grid.Row="1" Margin="0 10 0 0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="0" Text="Players ID"/>
+            <TextBox Grid.Row="1" Text="{Binding PlayerId, UpdateSourceTrigger=PropertyChanged}" Margin="0 5 0 0"/>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="5 25 0 0">
+                <Button Content="Submit" Command="{Binding AddPlayerFromDBCommand}"/>
+                <Button Content="Cancel" Margin="5 0 0 0" Grid.Column= "1" Command="{Binding CancelCommand}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

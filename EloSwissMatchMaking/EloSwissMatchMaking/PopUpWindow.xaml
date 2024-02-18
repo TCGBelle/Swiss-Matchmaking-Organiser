@@ -1,0 +1,27 @@
+﻿<Window x:Class="EloSwissMatchMaking.PopUpWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:EloSwissMatchMaking"
+        xmlns:views="clr-namespace:EloSwissMatchMaking.Views"
+        xmlns:vms="clr-namespace:EloSwissMatchMaking.ViewModels"
+        mc:Ignorable="d"
+        Title="PopUpWindow" Height="400" Width="400">
+    <ScrollViewer>
+        <Grid Margin="20 10 0 0" MaxWidth="400">
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type vms:AddPlayerManuallyViewModel}">
+                <views:AddPlayerManuallyView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:AddPlayerbyDbViewModel}">
+                <views:AddPlayerbyDBView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type vms:StandingsViewModel}">
+                <views:StandingsView/>
+            </DataTemplate>
+        </Grid.Resources>
+        <ContentControl Content="{Binding CurrViewModel}"/>
+    </Grid>
+    </ScrollViewer>
+</Window>
