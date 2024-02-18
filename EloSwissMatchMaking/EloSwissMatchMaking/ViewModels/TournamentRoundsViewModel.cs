@@ -116,7 +116,7 @@ namespace EloSwissMatchMaking.ViewModels
         {
             foreach (MatchViewModel match in _matchList)
             {
-                if(match._winnerDeclared == false)
+                if(match.WinnerDeclared == false)
                 {
                     return false;
                 }

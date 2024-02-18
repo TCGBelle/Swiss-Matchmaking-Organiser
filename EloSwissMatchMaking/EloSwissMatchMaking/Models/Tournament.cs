@@ -48,19 +48,6 @@ namespace EloSwissMatchMaking.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
 
-        /*public void HardCodePlayers() //testing function
-        {
-            Player Player1 = new Player("Annabelle McQuade", 1500, 11111111);
-            _playerList.AddFirst(Player1);
-            Player1 = new Player("Galin Yornadov", 1259, 11111116);
-            _playerList.AddFirst(Player1);
-            Player1 = new Player("Arran Anderson", 952, 11111120);
-            _playerList.AddFirst(Player1);
-            Player1 = new Player("Gaelin Yornadov", 1258, 11111126);
-            _playerList.AddFirst(Player1);
-            Player1 = new Player("Declan Patrick", 1450, 11111129);
-            _playerList.AddFirst(Player1);
-        }*/ //function no longer required as players can be loaded from Database
         public void AddNewPlayer(string  playerName)
         {
             int previousHighestID = _playerProvider.ReturnHighestID();
@@ -151,7 +138,7 @@ namespace EloSwissMatchMaking.Models
                 }
                 else
                 {
-                    PairRound1();
+                    PairRound1(); 
                 }
             }
             else
@@ -190,7 +177,7 @@ namespace EloSwissMatchMaking.Models
                 _removableCopyPlayerList.Remove(_removableCopyPlayerList.ElementAt(x));
                 _removableCopyPlayerList.Remove(_removableCopyPlayerList.ElementAt(y));
             }
-        }
+        } //if tournament is paired casually pairings in the first round are completley at random for local for fun tournaments if this was a commercial project
         private void PairRound1()
         {
             int HeadPointer = 0;
@@ -209,7 +196,7 @@ namespace EloSwissMatchMaking.Models
                 HeadPointer++;
                 TailPointer--;
             }
-        }
+        } //competative mode, pairings are entirley determanistic based on the elo of the players.
         private void PairRoundX()
         {
             _currentMatches.Clear();
@@ -221,7 +208,6 @@ namespace EloSwissMatchMaking.Models
             {
                 _removableCopyPlayerList.AddLast(player);
             }
-            //_removableCopyPlayerList = _playerList;
             if (WillThereBeABye())
             {
                 //if there is a bye get the player with the worst score but highest resistance and give them the bye
@@ -244,13 +230,13 @@ namespace EloSwissMatchMaking.Models
 
             MatchUpMatrix matchUpMatrix = new MatchUpMatrix();
             LinkedList<Match> matches = matchUpMatrix.FindOptimalMatches(_removableCopyPlayerList);
-            // a combination of Gale-Shapleys Stable Marriage Algorithim, with a score minimizing system to ensure pairings are optimal and no repeats. understand it is slow but only way i could get it to work
+            // a combination of Gale-Shapleys Stable Marriage Algorithim, with a score minimizing system to ensure pairings are optimal and no repeats. its unfortunetly quadratic in time but i personally cant work out a faster way
             foreach (Match match in matches)
             {
                 _currentMatches.AddLast(match);
             }
-          
-        }
+
+        } //pairings after round 1 are now based on score and resitance/"strength of schedule" while also needing to avoid rematches 
 
         public void UpdatePlayerFinalStandings()
         {

@@ -55,7 +55,7 @@ namespace EloSwissMatchMaking {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EloSwissMatchMaking;component/popupwindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EloSwissMatchMaking;V1.0.0.0;component/popupwindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\PopUpWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

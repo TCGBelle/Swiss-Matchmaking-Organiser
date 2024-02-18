@@ -65,7 +65,6 @@ namespace EloSwissMatchMaking.ViewModels.Commands
             {
                 int tempID = Int32.Parse(_parentViewModel.PlayerId);
                 _tournament.AddExistingPlayer(tempID);
-                //set up tournament view model update player list... subscribe to event?
                 _navService.ClosePopUp();
             }
             catch (FormatException)

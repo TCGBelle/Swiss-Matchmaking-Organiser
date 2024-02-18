@@ -53,7 +53,7 @@ namespace EloSwissMatchMaking.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EloSwissMatchMaking;component/views/standingsview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EloSwissMatchMaking;V1.0.0.0;component/views/standingsview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\StandingsView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

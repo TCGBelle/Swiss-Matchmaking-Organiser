@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Annabelle\\source\\repos\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj": {}
+    "C:\\Users\\Annabelle\\OneDrive\\My Documents\\GitHub\\Swiss-Matchmaking-Organiser\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Annabelle\\source\\repos\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj": {
+    "C:\\Users\\Annabelle\\OneDrive\\My Documents\\GitHub\\Swiss-Matchmaking-Organiser\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Annabelle\\source\\repos\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj",
+        "projectUniqueName": "C:\\Users\\Annabelle\\OneDrive\\My Documents\\GitHub\\Swiss-Matchmaking-Organiser\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj",
         "projectName": "EloSwissMatchMaking",
-        "projectPath": "C:\\Users\\Annabelle\\source\\repos\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj",
+        "projectPath": "C:\\Users\\Annabelle\\OneDrive\\My Documents\\GitHub\\Swiss-Matchmaking-Organiser\\EloSwissMatchMaking\\EloSwissMatchMaking\\EloSwissMatchMaking.csproj",
         "packagesPath": "C:\\Users\\Annabelle\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Annabelle\\source\\repos\\EloSwissMatchMaking\\EloSwissMatchMaking\\obj\\",
+        "outputPath": "C:\\Users\\Annabelle\\OneDrive\\My Documents\\GitHub\\Swiss-Matchmaking-Organiser\\EloSwissMatchMaking\\EloSwissMatchMaking\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Annabelle\\AppData\\Roaming\\NuGet\\NuGet.Config",

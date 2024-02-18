@@ -66,7 +66,6 @@ namespace EloSwissMatchMaking
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            //_tournament.HardCodePlayers(); //add test players players are now saved in db
             using (PlayerDBContext dBContext = _dbContextFactory.CreateDbContext())
             {
                 dBContext.Database.Migrate();
