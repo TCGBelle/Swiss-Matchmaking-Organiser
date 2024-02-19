@@ -88,7 +88,7 @@ namespace EloSwissMatchMaking.ViewModels
             {
                 if (_selectedMatch._match.Player2 != null)
                 {
-                    _tournament.RemovePlayer(_selectedMatch._match.Player1.Id);
+                    _tournament.RemovePlayer(_selectedMatch._match.Player2.Id);
                 }
             }
         }

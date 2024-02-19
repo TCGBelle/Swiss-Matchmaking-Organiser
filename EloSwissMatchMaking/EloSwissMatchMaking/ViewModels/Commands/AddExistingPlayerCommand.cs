@@ -66,6 +66,7 @@ namespace EloSwissMatchMaking.ViewModels.Commands
                 int tempID = Int32.Parse(_parentViewModel.PlayerId);
                 _tournament.AddExistingPlayer(tempID);
                 _navService.ClosePopUp();
+                _parentViewModel.PlayerId = "";
             }
             catch (FormatException)
             {

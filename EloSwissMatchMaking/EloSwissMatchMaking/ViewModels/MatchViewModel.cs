@@ -55,23 +55,25 @@ namespace EloSwissMatchMaking.ViewModels
             _player1Info.AppendLine(_match.Player1.Name);
             _player1Brush = Brushes.White;
             _player2Brush = Brushes.White;
+            _winnerDeclared = false;
+            _provinsoalWinner = 0;
             if (_match.Player2 == null)
             {
                 _player2Info.AppendLine("Bye");
                 Player1ProvincalWin();
                 Player1Brush = Brushes.Green;
                 Player2Brush = Brushes.Red;
+                _winnerDeclared = true;
+                _provinsoalWinner = 1;
             }
             else
             {
-                _player2Info.AppendLine(_match.Player1.Id.ToString());
+                _player2Info.AppendLine(_match.Player2.Id.ToString());
                 _player2Info.AppendLine(_match.Player2.Name);
             }
-            _provinsoalWinner = 0;
             Player1WinCommand = new RelayCommandBase(execute => Player1ProvincalWin(), canExecute => true);
             Player2WinCommand = new RelayCommandBase(execute => Player2ProvincalWin(), canExecute => _match.Player2 != null);
             DrawCommand = new RelayCommandBase(execute => ProvincalDraw(), canExecute => _match.Player2 != null);
-            _winnerDeclared = false;
         }
 
         public void Player1ProvincalWin()

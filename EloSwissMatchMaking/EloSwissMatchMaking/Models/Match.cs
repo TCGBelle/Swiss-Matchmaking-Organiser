@@ -28,6 +28,12 @@ namespace EloSwissMatchMaking.Models
                 {
                     _player1.UpdateScoreAndElo(0, _player2.ELO);
                     _player2.UpdateScoreAndElo(2, _player1.ELO);
+                    _player1.UpdatePreviouslyOpponents(_player2);
+                    _player2.UpdatePreviouslyOpponents(_player1);
+                }
+                else
+                {
+                    _player1.UpdateScoreInBye();
                 }
             }
            else if (playerX == 2)
@@ -36,6 +42,8 @@ namespace EloSwissMatchMaking.Models
                 {
                     _player2.UpdateScoreAndElo(0, _player1.ELO);
                     _player1.UpdateScoreAndElo(2, _player2.ELO);
+                    _player1.UpdatePreviouslyOpponents(_player2);
+                    _player2.UpdatePreviouslyOpponents(_player1);
                 }
 
             }
@@ -46,6 +54,8 @@ namespace EloSwissMatchMaking.Models
                 {
                     _player1.UpdateScoreAndElo(1, _player2.ELO);
                     _player2.UpdateScoreAndElo(1, _player1.ELO);
+                    _player1.UpdatePreviouslyOpponents(_player2);
+                    _player2.UpdatePreviouslyOpponents(_player1);
                 }
             }
             else

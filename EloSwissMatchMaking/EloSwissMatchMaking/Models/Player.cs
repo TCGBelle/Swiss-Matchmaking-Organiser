@@ -21,6 +21,7 @@ namespace EloSwissMatchMaking.Models
         private int _eloDelta;
         private int _eloK = 32; //K is the constant in the elo function can be ajusted to increase or decrease the fluctuations
         private int _scoreForWinning = 3;
+        private int _resistanceForBye = 1000;
         private LinkedList<Player> _previousOpponents;
         public LinkedList<Player> PreviousOpponents
         {
@@ -60,6 +61,17 @@ namespace EloSwissMatchMaking.Models
                 _eloDelta = CalculateElo(OppElo, 0.0f);
                 _elo += _eloDelta;
             }
+        }
+
+        public void UpdateScoreInBye()
+        {
+            _score += _scoreForWinning;
+            _resistance += _resistanceForBye;
+        }
+
+        public void UpdatePreviouslyOpponents(Player Opp)
+        {
+            _previousOpponents.AddLast(Opp);
         }
 
         private double ExpectationToWin(int Player1Rating, int Player2Rating)

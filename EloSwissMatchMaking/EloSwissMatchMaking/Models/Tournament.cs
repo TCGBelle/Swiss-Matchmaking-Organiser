@@ -228,9 +228,9 @@ namespace EloSwissMatchMaking.Models
                 }
             }
 
-            MatchUpMatrix matchUpMatrix = new MatchUpMatrix();
-            LinkedList<Match> matches = matchUpMatrix.FindOptimalMatches(_removableCopyPlayerList);
-            // a combination of Gale-Shapleys Stable Marriage Algorithim, with a score minimizing system to ensure pairings are optimal and no repeats. its unfortunetly quadratic in time but i personally cant work out a faster way
+            MatchUpMatrix matchUpMatrix = new MatchUpMatrix(_removableCopyPlayerList.ToList());
+            LinkedList<Match> matches = matchUpMatrix.GetBestMatchupCombination();
+            //an algorithim that finds the combination of matches with the lowest diffrence in score it is quadratic in time unfortunetly
             foreach (Match match in matches)
             {
                 _currentMatches.AddLast(match);

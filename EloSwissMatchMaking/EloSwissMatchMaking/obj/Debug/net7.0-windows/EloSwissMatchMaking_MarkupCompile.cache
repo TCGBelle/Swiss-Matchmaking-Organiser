@@ -4,15 +4,15 @@
 winexe
 C#
 .cs
-C:\Users\Annabelle\source\repos\EloSwissMatchMaking\EloSwissMatchMaking\obj\Debug\net7.0-windows\
+C:\Users\Annabelle\OneDrive\My Documents\GitHub\Swiss-Matchmaking-Organiser\EloSwissMatchMaking\EloSwissMatchMaking\obj\Debug\net7.0-windows\
 EloSwissMatchMaking
 none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
-C:\Users\Annabelle\source\repos\EloSwissMatchMaking\EloSwissMatchMaking\App.xaml
+C:\Users\Annabelle\OneDrive\My Documents\GitHub\Swiss-Matchmaking-Organiser\EloSwissMatchMaking\EloSwissMatchMaking\App.xaml
 7-1075684954
 
-50-1848526890
+49-154095747
 216-1936557903
 MainWindow.xaml;PopUpWindow.xaml;Views\AddPlayerbyDBView.xaml;Views\AddPlayerManuallyView.xaml;Views\StandingsView.xaml;Views\TournamentRoundsView.xaml;Views\TournamentSetupView.xaml;
 
