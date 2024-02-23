@@ -79,16 +79,16 @@ namespace EloSwissMatchMaking.ViewModels
         {
             if (_selectedMatch != null)
             {
-                _tournament.RemovePlayer(_selectedMatch._match.Player1.Id);
+                _tournament.RemovePlayer(_selectedMatch.Match.Player1.Id);
             }
         }
         private void DropPlayer2()
         {
             if (_selectedMatch != null)
             {
-                if (_selectedMatch._match.Player2 != null)
+                if (_selectedMatch.Match.Player2 != null)
                 {
-                    _tournament.RemovePlayer(_selectedMatch._match.Player2.Id);
+                    _tournament.RemovePlayer(_selectedMatch.Match.Player2.Id);
                 }
             }
         }

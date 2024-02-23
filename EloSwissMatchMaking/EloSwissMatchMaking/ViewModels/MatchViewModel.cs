@@ -12,7 +12,8 @@ namespace EloSwissMatchMaking.ViewModels
 {
     public class MatchViewModel : ViewModelBase
     {
-        public Match _match;
+        private Match _match;
+        public Match Match { get { return _match; } }
         private bool _winnerDeclared;
         public bool WinnerDeclared { get { return _winnerDeclared; } }
         private StringBuilder _player1Info;
