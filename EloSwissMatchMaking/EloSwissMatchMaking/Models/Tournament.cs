@@ -159,7 +159,7 @@ namespace EloSwissMatchMaking.Models
             if (WillThereBeABye())
             {
                 int rando = _random.Next(0, _removableCopyPlayerList.Count);
-                _currentMatches.AddLast(CreateNewMatch(_removableCopyPlayerList.ElementAt(rando), null));
+                _currentMatches.AddLast(CreateNewMatch(_removableCopyPlayerList.ElementAt(rando)));
                 _removableCopyPlayerList.Remove(_removableCopyPlayerList.ElementAt(rando));
             }
             int x;
@@ -186,7 +186,7 @@ namespace EloSwissMatchMaking.Models
             SortListByElo();
             if(WillThereBeABye())
             {
-                _currentMatches.AddLast(CreateNewMatch(_playerList.First(), null));
+                _currentMatches.AddLast(CreateNewMatch(_playerList.First()));
                 HeadPointer++;
             }
             while(HeadPointer < TailPointer)
@@ -220,7 +220,7 @@ namespace EloSwissMatchMaking.Models
                     if(inspectedPlayer.Score != nextInspectedPlayer.Score)
                     {
                         //since the list is sorted if the next player has a diffrent score it means we have found the highest rated player of the lowest score
-                        _currentMatches.AddLast(CreateNewMatch(_removableCopyPlayerList.ElementAt(x), null));
+                        _currentMatches.AddLast(CreateNewMatch(_removableCopyPlayerList.ElementAt(x)));
                         _removableCopyPlayerList.Remove(_removableCopyPlayerList.ElementAt(x));
                         foundByeCandate = true;
                     }
@@ -252,6 +252,12 @@ namespace EloSwissMatchMaking.Models
         private Match CreateNewMatch(Player player1, Player? player2)
         {
             Match tempMatch = new Match(player1, player2); //know its complaining about it being possibly null but need to check if its null for byes
+            return tempMatch;
+        }
+
+        private Match CreateNewMatch(Player player1)
+        {
+            Match tempMatch = new Match(player1);
             return tempMatch;
         }
     }

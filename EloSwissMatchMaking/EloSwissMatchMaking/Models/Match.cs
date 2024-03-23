@@ -20,6 +20,12 @@ namespace EloSwissMatchMaking.Models
             _player2 = player2;
         }
 
+        public Match(Player player1)
+        {
+            _player1 = player1;
+            _player2 = null;
+        }
+
         public void DeclareWinner(int playerX)
         {
            if (playerX == 1)
