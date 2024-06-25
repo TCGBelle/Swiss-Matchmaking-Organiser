@@ -16,7 +16,7 @@ namespace EloSwissMatchMaking.Models
         private readonly DatabasePlayerProvider _playerProvider;
         private readonly DatabasePlayerCreator _playerCreator;
         private LinkedList<Player> _playerList;
-        private LinkedList<Player> _removableCopyPlayerList; //intalized here do avoid creating/passing a potentially large list multiple times in pairroundx func
+        private List<Player> _removableCopyPlayerList; //intalized here do avoid creating/passing a potentially large list multiple times in pairroundx func
         private LinkedList<Match> _currentMatches; // both _playerList and _currentMatches can be null but there are more warnings if i make them nullable
         private int _currentRound;
         public int CurrentRound { get { return _currentRound; } }
@@ -39,7 +39,7 @@ namespace EloSwissMatchMaking.Models
             _currentRound = 0;
             _casualTournament= false;
             _playerList = new LinkedList<Player>();
-            _removableCopyPlayerList = new LinkedList<Player>();
+            _removableCopyPlayerList = new List<Player>();
             _currentMatches = new LinkedList<Match>();
         }
 
@@ -154,7 +154,7 @@ namespace EloSwissMatchMaking.Models
             _removableCopyPlayerList.Clear();
             foreach (Player player in _playerList)
             {
-                _removableCopyPlayerList.AddLast(player);
+                _removableCopyPlayerList.Add(player);
             }
             if (WillThereBeABye())
             {
@@ -206,7 +206,7 @@ namespace EloSwissMatchMaking.Models
             _removableCopyPlayerList.Clear();
             foreach(Player player in _playerList)
             {
-                _removableCopyPlayerList.AddLast(player);
+                _removableCopyPlayerList.Add(player);
             }
             if (WillThereBeABye())
             {
@@ -228,8 +228,7 @@ namespace EloSwissMatchMaking.Models
                 }
             }
 
-            MatchUpMatrix matchUpMatrix = new MatchUpMatrix(_removableCopyPlayerList.ToList());
-            LinkedList<Match> matches = matchUpMatrix.GetBestMatchupCombination();
+            LinkedList<Match> matches = MatchUpMatrix.GetBestMatchupCombination(ref _removableCopyPlayerList);
             //an algorithim that finds the combination of matches with the lowest diffrence in score it is quadratic in time unfortunetly
             foreach (Match match in matches)
             {

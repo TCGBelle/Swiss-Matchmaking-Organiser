@@ -2,6 +2,7 @@
 using EloSwissMatchMaking.Services.Navigation;
 using EloSwissMatchMaking.Stores;
 using EloSwissMatchMaking.ViewModels.Commands;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;

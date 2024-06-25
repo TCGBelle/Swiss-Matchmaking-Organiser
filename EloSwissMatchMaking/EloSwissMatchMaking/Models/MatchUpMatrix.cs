@@ -13,37 +13,37 @@ namespace EloSwissMatchMaking.Models
         public Player Player2 { get; set; }
         public int ScoreDifference { get; set; }
     }
-    public class MatchUpMatrix
+    public static class MatchUpMatrix
     {
-        private List<Player> _players;
-        private List<Matchup> _matchups;
-        private LinkedList<Match> _optimalMatches;
-        public MatchUpMatrix(List<Player> players)
+        /*public MatchUpMatrix(List<Player> players)
         {
             _players = players;
             _matchups = GenerateAllMatchups();
             _optimalMatches = new LinkedList<Match>();
-        }
-        public LinkedList<Match> GetBestMatchupCombination()
+        }*/
+        public static LinkedList<Match> GetBestMatchupCombination(ref List<Player> PlayerListRef)
         {
+            List<Matchup> allMatchUps = GenerateAllMatchups(ref PlayerListRef);
             List<Matchup> bestCombination = null;
+            LinkedList<Match> optimalMatches = new LinkedList<Match>();
             int minTotalScoreDifference = int.MaxValue;
 
+
             // Recursively find the combination of matches with the lowest total score difference
-            FindBestCombination(new HashSet<Player>(), new List<Matchup>(), ref bestCombination, ref minTotalScoreDifference);
+            FindBestCombination(new HashSet<Player>(), new List<Matchup>(), ref bestCombination, ref minTotalScoreDifference, ref PlayerListRef, ref allMatchUps);
 
             //bestCombination;
             foreach (Matchup matchup in bestCombination)
             {
-                _optimalMatches.AddLast(CreateNewMatch(matchup.Player1, matchup.Player2));
+                optimalMatches.AddLast(CreateNewMatch(matchup.Player1, matchup.Player2));
             }
-            return _optimalMatches;
+            return optimalMatches;
         }
 
-        private void FindBestCombination(HashSet<Player> pairedPlayers, List<Matchup> currentCombination, ref List<Matchup> bestCombination, ref int minTotalScoreDifference)
+        private static void FindBestCombination(HashSet<Player> pairedPlayers, List<Matchup> currentCombination, ref List<Matchup> bestCombination, ref int minTotalScoreDifference, ref List<Player> PlayerListRef, ref List<Matchup> allMatchUpsRef)
         {
             // Base case: if all players are paired, calculate the total score difference
-            if (pairedPlayers.Count == _players.Count)
+            if (pairedPlayers.Count == PlayerListRef.Count)
             {
                 int totalScoreDifference = currentCombination.Sum(m => m.ScoreDifference);
                 if (totalScoreDifference < minTotalScoreDifference)
@@ -55,7 +55,7 @@ namespace EloSwissMatchMaking.Models
             }
 
             // Recursive case: try adding each unpaired match to the current combination
-            foreach (var matchup in _matchups)
+            foreach (var matchup in allMatchUpsRef)
             {
                 if (!pairedPlayers.Contains(matchup.Player1) && !pairedPlayers.Contains(matchup.Player2))
                 {
@@ -65,7 +65,7 @@ namespace EloSwissMatchMaking.Models
                     pairedPlayers.Add(matchup.Player2);
 
                     // Explore
-                    FindBestCombination(pairedPlayers, currentCombination, ref bestCombination, ref minTotalScoreDifference);
+                    FindBestCombination(pairedPlayers, currentCombination, ref bestCombination, ref minTotalScoreDifference, ref PlayerListRef, ref allMatchUpsRef);
 
                     // Unchoose
                     currentCombination.Remove(matchup);
@@ -74,25 +74,25 @@ namespace EloSwissMatchMaking.Models
                 }
             }
         }
-        private List<Matchup> GenerateAllMatchups()
+        private static List<Matchup> GenerateAllMatchups(ref List<Player> PlayerListRef)
         {
             var matchups = new List<Matchup>();
 
-            for (int i = 0; i < _players.Count; i++)
+            for (int i = 0; i < PlayerListRef.Count; i++)
             {
-                for (int j = i + 1; j < _players.Count; j++)
+                for (int j = i + 1; j < PlayerListRef.Count; j++)
                 {
-                    if (_players[i] != _players[j])
+                    if (PlayerListRef[i] != PlayerListRef[j])
                     {
-                        int scoreDifference = Math.Abs(_players[i].Score - _players[j].Score);
-                        foreach (Player p in _players[i].PreviousOpponents)
+                        int scoreDifference = Math.Abs(PlayerListRef[i].Score - PlayerListRef[j].Score);
+                        foreach (Player p in PlayerListRef[i].PreviousOpponents)
                         {
-                            if (p == _players[j])
+                            if (p == PlayerListRef[j])
                             {
                                 scoreDifference += 1000;//add a butt tone of points to matches previously played by same people to discourage them unless absalutley nessasary
                             }
                         }
-                        matchups.Add(new Matchup { Player1 = _players[i], Player2 = _players[j], ScoreDifference = scoreDifference });
+                        matchups.Add(new Matchup { Player1 = PlayerListRef[i], Player2 = PlayerListRef[j], ScoreDifference = scoreDifference });
                     }
                 }
             }
@@ -102,7 +102,7 @@ namespace EloSwissMatchMaking.Models
 
             return matchups;
         }
-        private Match CreateNewMatch(Player player1, Player? player2)
+        private static Match CreateNewMatch(Player player1, Player? player2)
         {
             Match tempMatch = new Match(player1, player2); //know its complaining about it being possibly null but need to check if its null for byes
             return tempMatch;
